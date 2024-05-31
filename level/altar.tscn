@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dymvxk2h0roip"]
+
+[ext_resource type="PackedScene" uid="uid://cqnnu7flas5cu" path="res://level/tile_map.tscn" id="1_julys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0ffh"]
+size = Vector2(15, 23)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqegn"]
+radius = 16.0
+height = 48.0
+
+[node name="Altar" type="Area2D"]
+collision_layer = 16
+
+[node name="TileMap" parent="." instance=ExtResource("1_julys")]
+layer_0/tile_data = PackedInt32Array(-65536, 3276800, 10, 0, 3276800, 11)
+
+[node name="Sculpture" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sculpture"]
+position = Vector2(8.5, 4.5)
+shape = SubResource("RectangleShape2D_h0ffh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 24)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uqegn")

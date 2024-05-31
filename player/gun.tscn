@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu3c4c1v287x1"]
+
+[ext_resource type="Texture2D" uid="uid://bmh30ke7bvotj" path="res://textures/roguelikeChar_transparent.png" id="1_w15xw"]
+[ext_resource type="Script" path="res://player/gun.gd" id="2_mfigc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quihx"]
+atlas = ExtResource("1_w15xw")
+region = Rect2(748, 102, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgwq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quihx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_imrwa"]
+colors = PackedColorArray(0.605705, 0, 0, 1, 0.829617, 0.79826, 0.21975, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e4ajy"]
+gradient = SubResource("Gradient_imrwa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0dwt1"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 56.18
+initial_velocity_max = 108.81
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(1, 0.160784, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_e4ajy")
+hue_variation_min = -0.23
+hue_variation_max = 0.04
+
+[node name="Gun" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tgwq8")
+script = ExtResource("2_mfigc")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(-5, -9)
+
+[node name="Explosion" type="GPUParticles2D" parent="."]
+position = Vector2(-6, -9)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_0dwt1")
+lifetime = 0.2
+one_shot = true
+speed_scale = 5.0
+explosiveness = 0.09

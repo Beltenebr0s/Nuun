@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfag16m2sbdqx"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_scwoa"]
+[ext_resource type="Texture2D" uid="uid://bmh30ke7bvotj" path="res://textures/roguelikeChar_transparent.png" id="2_wcwkt"]
+[ext_resource type="PackedScene" uid="uid://bu3c4c1v287x1" path="res://player/gun.tscn" id="3_6ciir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4d8t"]
+size = Vector2(4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hocgy"]
+atlas = ExtResource("2_wcwkt")
+region = Rect2(0, 153, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdavo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hocgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_mask = 28
+script = ExtResource("1_scwoa")
+speed = 300
+fire_force = 600
+damage_multiplier = 1.0
+prayer_force = 2
+prayer_time = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c4d8t")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_kdavo")
+
+[node name="Gun" parent="." instance=ExtResource("3_6ciir")]
+position = Vector2(-2, 0)
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

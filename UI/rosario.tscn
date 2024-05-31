@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bid1vb186t6qj"]
+
+[ext_resource type="Script" path="res://UI/rosario.gd" id="1_r0uqd"]
+
+[node name="Rosario" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0uqd")
+
+[node name="Bolitas" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 116.0
+offset_bottom = 26.0
+text = "BOLITAS: 9999"
+
+[node name="RosariosCompletos" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = 129.0
+offset_bottom = 51.0
+text = "ROSARIOS: 9999"
